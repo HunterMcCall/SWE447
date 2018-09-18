@@ -6,13 +6,18 @@
   <script src="../Common/initShaders.js"></script>
   <script src="../Common/Cone.js"></script>
   <script src="cone.js"></script> 
+  <script src="Cone-vertex-shader" type="x-shader/x-vertex">
   
   attribute vec4 vPosition;
 
-  Cone-vertex-shader() 
+  void main()
   {
        gl_Position = vPosition;
   }
+  
+  </script>
+  
+  <script src="Cone-fragment-shader" type="x-shader/x-fragment">
   
   Cone-fragment-shader()
   {

@@ -1,5 +1,5 @@
-var gl = null;
 var cone = null;
+var gl = null;
 
 function init() {
     var canvas = document.getElementById( "webgl-canvas" );

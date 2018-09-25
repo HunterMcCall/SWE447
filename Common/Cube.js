@@ -80,6 +80,42 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             23, 21, 22
         ])
     };
+	
+	this.colors = {
+	values : new Float32Array([
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+		
+		1.0, 1.0, 0.0,
+		1.0, 1.0, 0.0,
+		1.0, 1.0, 0.0,
+		1.0, 1.0, 0.0,
+		
+		1.0, 1.0, 1.0,
+		1.0, 1.0, 1.0,
+		1.0, 1.0, 1.0,
+		1.0, 1.0, 1.0,
+		
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+		
+		1.0, 0.0, 1.0,
+		1.0, 0.0, 1.0,
+		1.0, 0.0, 1.0,
+		1.0, 0.0, 1.0,
+		
+		0.0, 1.0, 1.0,
+		0.0, 1.0, 1.0,
+		0.0, 1.0, 1.0,
+		0.0, 1.0, 1.0
+	]),
+	numComponents : 3
+	};
+	
     this.indices.count = this.indices.values.length;
 
     
@@ -94,6 +130,15 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     this.positions.attributeLoc = gl.getAttribLocation( this.program, "vPosition" );
     gl.enableVertexAttribArray( this.positions.attributeLoc );
 
+	//color
+    this.colors.buffer = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, this.colors.buffer );
+    gl.bufferData( gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW );
+	
+	this.colors.attributeLoc = gl.getAttribLocation( this.program, "vColors" );
+    gl.enableVertexAttribArray( this.colors.attributeLoc );
+	
+	
     MVLoc = gl.getUniformLocation( this.program, "MV" );
 
     this.MV = undefined;
@@ -103,6 +148,10 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
         gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
         gl.vertexAttribPointer( this.positions.attributeLoc, this.positions.numComponents,
+            gl.FLOAT, gl.FALSE, 0, 0 );
+			
+		gl.bindBuffer( gl.ARRAY_BUFFER, this.colors.buffer );
+        gl.vertexAttribPointer( this.colors.attributeLoc, this.colors.numComponents,
             gl.FLOAT, gl.FALSE, 0, 0 );
  
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );

@@ -1,0 +1,16 @@
+For my final project I would like to make a tree with fruit hanging off of it. The fruit will grow in size rapidly before falling
+off the tree onto the ground. I will render the fruits with textures and possibly have multiple fruits as well. 
+I intend to have the fruit roll once it hits the ground until it is offscreen.
+As a stretch goal I would like to have falling leaves as well.
+
+Week 1: I will start by finding models for the fruit as well as the tree/leaves and the accompanying images.
+
+Week 2: I will complete the code to render the fruit and possibly the tree as well.
+
+Week 3: Begin working on the scale and translation aspects of the fruit growing and falling once at a certain size.
+
+Week 4: Work on the rotation of the rolling fruit
+
+Week 5: Finish up extraneous work and possibly work on the stretch goal.
+
+I will be using THREE.js and any other helpful libraries I might need. This will be web based but will not require user input. 

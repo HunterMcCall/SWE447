@@ -1,7 +1,7 @@
 For my final project I would like to make a tree with fruit hanging off of it. The fruit will grow in size rapidly before falling
 off the tree onto the ground. I will render the fruits with textures and possibly have multiple fruits as well. 
-I intend to have the fruit roll once it hits the ground until it is offscreen.
-As a stretch goal I would like to have falling leaves as well.
+I intend to have the fruit fall into a bucket on the ground which will then be carried by a conveyor belt until it is offscreen.
+As a stretch goal I would like to have falling leaves as well and possibly other gameplay features.
 
 Week 1: I will start by finding models for the fruit as well as the tree/leaves and the accompanying images.
 
@@ -17,3 +17,4 @@ I will be using THREE.js and any other helpful libraries I might need. This will
 
 Scott Thompson and I will be working together to make this into a game where the user clicks on fruit of appropriate ripeness 
 to earn points. The higher the score the better and the closer a fruit is to being perfectly ripe will increase the score the player gets.
+Please let us know if you believe this would be an acceptable project for a pair of people. Thank you.

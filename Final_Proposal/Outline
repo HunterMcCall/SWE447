@@ -14,3 +14,6 @@ Week 4: Work on the rotation of the rolling fruit
 Week 5: Finish up extraneous work and possibly work on the stretch goal.
 
 I will be using THREE.js and any other helpful libraries I might need. This will be web based but will not require user input. 
+
+Scott Thompson and I will be working together to make this into a game where the user clicks on fruit of appropriate ripeness 
+to earn points. The higher the score the better and the closer a fruit is to being perfectly ripe will increase the score the player gets.

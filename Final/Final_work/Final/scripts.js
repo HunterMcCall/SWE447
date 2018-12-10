@@ -1,3 +1,23 @@
+/*var gl = undefined;
+
+function init() {
+  var canvas = document.getElementById( "webgl-canvas" );
+
+  gl = WebGLUtils.setupWebGL( canvas );
+
+  if ( !gl ) {
+    alert("Unable to setup WebGL");
+    return;
+  }
+
+  gl.clearColor( 0.8, 0.8, 0.8, 1.0 );
+  gl.enable( gl.DEPTH_TEST );
+  
+  render();
+}
+
+*/
+
 var scene = new THREE.Scene();
 
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -26,7 +46,7 @@ scene.add(fillLight);
 scene.add(backLight);
 
 var mtlLoader = new THREE.MTLLoader();
-mtlLoader.load('testing.mtl', function (materials) {
+mtlLoader.load('grass.mtl', function (materials) {
 
     materials.preload();
 
@@ -47,14 +67,14 @@ mtlLoader.load('testing.mtl', function (materials) {
 });
 
 var mtlLoader2 = new THREE.MTLLoader();
-mtlLoader.load('testing.mtl', function (materials) {
+mtlLoader2.load('appleTexture.mtl', function (materials) {
 
     materials.preload();
 
-    var objLoader = new THREE.OBJLoader();
-    objLoader.setMaterials(materials);
+    var objLoader2 = new THREE.OBJLoader();
+    objLoader2.setMaterials(materials);
     var vscale = .5;
-    objLoader.load('grass.obj', function (object) { 
+    objLoader2.load('grass.obj', function (object) { 
        object.scale.x = vscale;
        object.scale.y = .1;
 	   object.scale.z = vscale;
@@ -106,14 +126,17 @@ mtlLoader.load('testing.mtl', function (materials) {
     var ascale = .2;
     objLoader.load('apple.obj', function (object) { 
 	
-       object.scale.x = ascale;
-       object.scale.y = ascale;
-	   object.scale.z = ascale;
-	   object.position.x = 5;
-	   object.position.y = 40;
-	   object.position.z = 22;
-	   object.rotation.x = 100;
+	   console.log(object);
 	   apple2 = object;
+	   
+       apple2.scale.x = ascale;
+       apple2.scale.y = ascale;
+	   apple2.scale.z = ascale;
+	   apple2.position.x = 5;
+	   apple2.position.y = 40;
+	   apple2.position.z = 22;
+	   apple2.rotation.x = 100;
+
        scene.add(apple2);
 
         //object.position.y -= 60;
@@ -123,12 +146,11 @@ mtlLoader.load('testing.mtl', function (materials) {
 
 });
 	
-
-
+	
 var animate = function () {
-	
-	
-	//objLoader.rotation.x = 5;
+
+		
+	//apple2.rotation.x = 5;
 	
 	requestAnimationFrame( animate );
 	controls.update();
@@ -136,3 +158,10 @@ var animate = function () {
 };
 
 animate();
+
+/*function render() {
+  gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
+}
+
+window.onload = init;
+*/

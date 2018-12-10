@@ -46,8 +46,33 @@ mtlLoader.load('testing.mtl', function (materials) {
 
 });
 
+var mtlLoader2 = new THREE.MTLLoader();
+mtlLoader.load('testing.mtl', function (materials) {
 
-var mtlLoader = new THREE.MTLLoader();
+    materials.preload();
+
+    var objLoader = new THREE.OBJLoader();
+    objLoader.setMaterials(materials);
+    var vscale = .5;
+    objLoader.load('grass.obj', function (object) { 
+       object.scale.x = vscale;
+       object.scale.y = .1;
+	   object.scale.z = vscale;
+	   object.position.x = -10;
+	   object.position.y = -10;
+	   object.position.z = 65;
+
+        scene.add(object);
+        //object.position.y -= 60;
+
+
+    });
+
+});
+
+
+
+var mtlLoader3 = new THREE.MTLLoader();
 mtlLoader.load('testing.mtl', function (materials) {
 
     materials.preload();
@@ -72,7 +97,7 @@ mtlLoader.load('testing.mtl', function (materials) {
 
 
 
-var mtlLoader = new THREE.MTLLoader();
+
 mtlLoader.load('testing.mtl', function (materials) {
 	materials.preload();
 

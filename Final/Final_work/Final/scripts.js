@@ -14,9 +14,8 @@ function init() {
   gl.enable( gl.DEPTH_TEST );
   
   render();
-}
+}*/
 
-*/
 
 var scene = new THREE.Scene();
 
@@ -127,7 +126,7 @@ mtlLoader.load('testing.mtl', function (materials) {
     objLoader.load('apple.obj', function (object) { 
 	
 	   console.log(object);
-	   apple2 = object;
+	   var apple2 = object;
 	   
        apple2.scale.x = ascale;
        apple2.scale.y = ascale;
@@ -136,6 +135,7 @@ mtlLoader.load('testing.mtl', function (materials) {
 	   apple2.position.y = 40;
 	   apple2.position.z = 22;
 	   apple2.rotation.x = 100;
+	   apple2.name = "apple2";
 
        scene.add(apple2);
 
@@ -147,21 +147,22 @@ mtlLoader.load('testing.mtl', function (materials) {
 });
 	
 	
-var animate = function () {
+function animate() {
 
-		
-	//apple2.rotation.x = 5;
+	// apple2.rotation.x = 5;
+	
+	scene.getObjectByName("apple2").rotation.x += 0.01;
 	
 	requestAnimationFrame( animate );
 	controls.update();
 	renderer.render(scene, camera);
 };
 
-animate();
 
-/*function render() {
+/*
+function render() {
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
-}
-
-window.onload = init;
-*/
+  animate();
+}*/
+/*
+window.onload = init();*/

@@ -63,7 +63,7 @@ mtlLoader.load('grass.mtl', function (materials) {
 
     });
 
-});
+});1
 
 var mtlLoader2 = new THREE.MTLLoader();
 mtlLoader2.load('appleTexture.mtl', function (materials) {
@@ -98,14 +98,15 @@ mtlLoader.load('testing.mtl', function (materials) {
 
     var objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
-    var ascale = .2;
+    var ascale = .01;
     objLoader.load('apple.obj', function (object2) { 
        object2.scale.x = ascale;
        object2.scale.y = ascale;
 	   object2.scale.z = ascale;
 	   object2.position.x = 40;
-	   object2.position.y = 38;
+	   object2.position.y = 45;
 	   object2.position.z = -50;
+	   object2.name = "object2";
        scene.add(object2);
         //object.position.y -= 60;
 
@@ -122,7 +123,7 @@ mtlLoader.load('testing.mtl', function (materials) {
 
     var objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
-    var ascale = .2;
+    var ascale = .01;
     objLoader.load('apple.obj', function (object) { 
 	
 	   console.log(object);
@@ -132,7 +133,7 @@ mtlLoader.load('testing.mtl', function (materials) {
        apple2.scale.y = ascale;
 	   apple2.scale.z = ascale;
 	   apple2.position.x = 5;
-	   apple2.position.y = 40;
+	   apple2.position.y = 50;
 	   apple2.position.z = 22;
 	   apple2.rotation.x = 100;
 	   apple2.name = "apple2";
@@ -150,8 +151,71 @@ mtlLoader.load('testing.mtl', function (materials) {
 function animate() {
 
 	// apple2.rotation.x = 5;
+	if(scene.getObjectByName("apple2").scale.x < .2)
+	{
+		scene.getObjectByName("apple2").scale.x += .001;
+		scene.getObjectByName("apple2").scale.y += .001;
+		scene.getObjectByName("apple2").scale.z += .001;
+	}
+	else if (scene.getObjectByName("apple2").scale.x >= .2)
+	{
+		scene.getObjectByName("apple2").rotation.y -= 0.1;
+		if(scene.getObjectByName("apple2").position.y > -2)
+		{
+			scene.getObjectByName("apple2").position.y -= 1;
+			scene.getObjectByName("apple2").rotation.x += 0.05;
+		}
+		else if (scene.getObjectByName("apple2").position.y <= -2)
+		{
+			scene.getObjectByName("apple2").position.x += 1;
+			if (scene.getObjectByName("apple2").position.x >= 300)
+			{
+				scene.getObjectByName("apple2").position.x = 5;
+				scene.getObjectByName("apple2").position.y = 50;
+				scene.getObjectByName("apple2").position.z = 22;
+				scene.getObjectByName("apple2").rotation.x = 100;
+				scene.getObjectByName("apple2").rotation.y = 0;
+				scene.getObjectByName("apple2").rotation.z = 0;
+				scene.getObjectByName("apple2").scale.x = .01;
+				scene.getObjectByName("apple2").scale.y = .01;
+				scene.getObjectByName("apple2").scale.z = .01;
+				
+			}
+		}
+	}
 	
-	scene.getObjectByName("apple2").rotation.x += 0.01;
+	if(scene.getObjectByName("object2").scale.x < .2)
+	{
+		scene.getObjectByName("object2").scale.x += .00075;
+		scene.getObjectByName("object2").scale.y += .00075;
+		scene.getObjectByName("object2").scale.z += .00075;
+	}
+	else if (scene.getObjectByName("object2").scale.x >= .2)
+	{
+		scene.getObjectByName("object2").rotation.y += 0.05;
+		if(scene.getObjectByName("object2").position.y > -2)
+		{
+			scene.getObjectByName("object2").position.y -= 1;
+			scene.getObjectByName("object2").rotation.x += 0.05;
+		}
+		else if (scene.getObjectByName("object2").position.y <= -2)
+		{
+			scene.getObjectByName("object2").position.x -= .5;
+			if (scene.getObjectByName("object2").position.x <= -300)
+			{
+				scene.getObjectByName("object2").position.x = 40;
+				scene.getObjectByName("object2").position.y = 45;
+				scene.getObjectByName("object2").position.z = -50;
+				scene.getObjectByName("object2").rotation.x = 100;
+				scene.getObjectByName("object2").rotation.y = 0;
+				scene.getObjectByName("object2").rotation.z = 0;
+				scene.getObjectByName("object2").scale.x = .01;
+				scene.getObjectByName("object2").scale.y = .01;
+				scene.getObjectByName("object2").scale.z = .01;
+				
+			}
+		}
+	}
 	
 	requestAnimationFrame( animate );
 	controls.update();
